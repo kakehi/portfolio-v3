@@ -25,8 +25,7 @@ class SingleProject extends React.Component {
 	};
 
 	onProjectSelect = (project) => {
-		console.log(project)
-		//this.setState({selectedVideo: project});
+		this.setState({selectedProject: project});
 	}
 
 	// required method for the class
