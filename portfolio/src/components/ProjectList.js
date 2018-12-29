@@ -1,10 +1,21 @@
 import React from 'react';
 import ProjectItem from './ProjectItem';
 
-const ProjectList = ({ projects }) => {
+const ProjectList = ({ projects, onProjectSelect }) => {
 
 	const renderedList = projects.map(project => {
-		return <ProjectItem key='aaaa' project={project} />
+		
+		// error handler
+		if(!project)
+			return <div>loading...</div>;
+
+		return(
+			<ProjectItem 
+				key={project.id.$t}
+				project={project}
+				onProjectSelect = {onProjectSelect}
+			/>
+		);
 	});
 
 	// required method for the class

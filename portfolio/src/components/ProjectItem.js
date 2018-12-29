@@ -1,15 +1,15 @@
 import React from 'react';
 
-const ProjectItem = (project) => {
+const ProjectItem = ({project, onProjectSelect}) => {
 	
 	//console.log(project.project.id);
 
 	// Check if the content is already loaded
-	if(project.project.gsx$title){
+	if(project){
 		return (
-			<div>
-				<h1>{project.project.gsx$title.$t}</h1>
-				<p>{project.project.gsx$subtitle.$t}</p>
+			<div onClick={()=>onProjectSelect(project)}>
+				<h4>{project.gsx$title.$t}</h4>
+				<p>{project.gsx$subtitle.$t}</p>
 			</div>
 		);
 	}

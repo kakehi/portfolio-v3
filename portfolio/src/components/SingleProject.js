@@ -1,6 +1,8 @@
 import React from 'react';
-import ProjectList from './ProjectList';
 import SpreadSheet from '../apis/SpreadSheet'
+import ProjectDetail from './ProjectDetail';
+import ProjectList from './ProjectList';
+
 
 class SingleProject extends React.Component {
 
@@ -22,13 +24,24 @@ class SingleProject extends React.Component {
 		this.setState({projects: response.data.feed.entry});
 	};
 
+	onProjectSelect = (project) => {
+		console.log(project)
+		//this.setState({selectedVideo: project});
+	}
+
 	// required method for the class
 	render(){
 		//console.log(this.state);
 		return(
 			<div>
 				<div>This is a single project</div>
-				<ProjectList projects={this.state.projects} />
+				<ProjectList
+					projects={this.state.projects}
+					onProjectSelect={this.onProjectSelect} 
+				/>
+				<ProjectDetail
+					project={this.state.selectedProject} 
+				/>
 			</div>
 		);
 	}
