@@ -4,9 +4,9 @@ import SpreadSheet from '../apis/SpreadSheet'
 
 class SingleProject extends React.Component {
 
-	stete = {
+	state = {
 		selectedProject: null,
-		projects: [] /* list of projects on sidepanel */
+		projects: ['aaa','bbb'] /* list of projects on sidepanel */
 	};
 
 	// Run after the initial code mounting is completed.
@@ -19,16 +19,16 @@ class SingleProject extends React.Component {
 		const response = await SpreadSheet.get('/1wbyIkXzWDIRaz9Tb_48GDOx5bPohLIQLF1f0Roz-l6w/od6/public/values?alt=json'
 		);
 
-		console.log(response.data);
+		this.setState({projects: response.data.feed.entry});
 	};
-
 
 	// required method for the class
 	render(){
+		console.log(this.state);
 		return(
 			<div>
 				<div>This is a single project</div>
-				<ProjectList />
+				<ProjectList projects={this.state.projects} />
 			</div>
 		);
 	}

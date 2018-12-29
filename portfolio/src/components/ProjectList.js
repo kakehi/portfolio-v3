@@ -1,13 +1,16 @@
 import React from 'react';
+import ProjectItem from './ProjectItem';
 
-class ProjectList extends React.Component {
+const ProjectList = ({ projects }) => {
+
+	const renderedList = projects.map(project => {
+		return <ProjectItem key='aaaa' project={project} />
+	});
 
 	// required method for the class
-	render(){
-		return(
-			<div>Project List</div>
-		)
-	}
-}
+	return(
+		<div>{renderedList}</div>
+	);
+};
 
 export default ProjectList;
